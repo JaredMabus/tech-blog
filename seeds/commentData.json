@@ -1,0 +1,12 @@
+[
+  {
+    "content": "User2 comment content",
+    "post_id": 1,
+    "user_id": 2
+  },
+  {
+    "content": "User1 comment content",
+    "post_id": 1,
+    "user_id": 1
+  }
+]
