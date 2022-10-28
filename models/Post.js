@@ -29,22 +29,16 @@ Post.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'users',
                 key: 'id',
             },
         }
     },
     {
-        hooks: {
-            beforeCreate: async (newUserData) => {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
-                return newUserData;
-            },
-        },
         sequelize,
         timestamps: true,
         underscored: true,
-        modelName: 'post',
+        modelName: 'posts',
     }
 );
 
