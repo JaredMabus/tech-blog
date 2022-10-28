@@ -11,8 +11,6 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
   try {
-    console.log(req.session.loggedIn);
-
     if (req.session.loggedIn) {
       res.render('dashboard', { loggedIn: req.session.loggedIn });
     } else {
