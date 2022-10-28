@@ -1,0 +1,28 @@
+<header>
+  <nav id="nav-bar" class="navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand" href="/">Tech-Blog</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+        {{#if loggedIn}}
+          <a id="logout-btn" class="nav-link">Logout</a>
+        {{else}}
+          <a class="nav-link" href="/login">Login</a>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+</header>
