@@ -3,17 +3,38 @@ const { User } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all users, sorted by name
-    // const userData = await User.findAll({
-    //   attributes: { exclude: ['password'] },
-    //   order: [['name', 'ASC']],
-    // });
+    res.render('home', { loggedIn: req.session.loggedIn });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-    // Serialize user data so templates can read it
-    // const users = userData.map((project) => project.get({ plain: true }));
+router.get('/dashboard', async (req, res) => {
+  try {
+    console.log(req.session.loggedIn);
 
-    // Pass serialized data into Handlebars.js template
-    res.render('home');
+    if (req.session.loggedIn) {
+      res.render('dashboard', { loggedIn: req.session.loggedIn });
+    } else {
+      res.redirect('/login');
+    }
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/login', async (req, res) => {
+  try {
+    res.render('login', { loggedIn: req.session.loggedIn });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/sign-up', async (req, res) => {
+  try {
+    res.render('signUp', { loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }

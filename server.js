@@ -3,8 +3,8 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-const api = require('./controllers/api');
 const sequelize = require('./config/connection');
+const helpers = require('./utils/helpers');
 require('dotenv').config();
 
 // Create a new sequelize store using the express-session package
@@ -14,13 +14,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Create and register handlebars engine with express app
-const hbs = exphbs.create();
+const hbs = exphbs.create({ helpers });
 
 // Sets up session and connect to Sequelize db
 const sess = {
     secret: process.env.SECRET_KEY,
     cookie: {
-        maxAge: 60 * 60 * 1000,
+        maxAge: 60 * 1000,
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
