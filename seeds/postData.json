@@ -3,5 +3,10 @@
     "title": "First post title",
     "content": "This is the content section",
     "user_id": 1
+  },
+  {
+    "title": "Second post title",
+    "content": "This is a second post by the first user",
+    "user_id": 1
   }
 ]
