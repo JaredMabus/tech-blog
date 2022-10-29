@@ -14,7 +14,7 @@ const loginApi = async (data) => {
         let resData = await res.json();
 
         if (res.ok) {
-            window.location.assign('http://localhost:3001/')
+            window.location.assign('/')
         } else {
             console.log(resData.msg);
         }
@@ -36,7 +36,7 @@ const logoutApi = async () => {
         let res = await fetch(url, options);
 
         if (res.ok) {
-            window.location.assign('http://localhost:3001/')
+            window.location.assign('/')
         }
 
         return;

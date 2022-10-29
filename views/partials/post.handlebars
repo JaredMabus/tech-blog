@@ -1,0 +1,16 @@
+
+{{#each data as |post|}}
+    <div id="post-list" class="list-group row-col-6">
+      <div data-id="{{post.id}}" id="post-wrapper">
+        <div id="post-header">
+          <h4>{{post.title}}</h4>
+          <div id="post-user-time">
+            <p>{{post.user.username}}</p>
+            <p>{{formatDate post.createdAt}}</p>
+          </div>
+        </div>
+        <p>{{post.content}}</p>
+      </div>
+    </div>
+  </a>
+{{/each}}

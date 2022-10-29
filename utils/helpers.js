@@ -11,5 +11,8 @@ module.exports = {
             return ""
         }
     },
+    formatDate: (date) => {
+        return date.toLocaleDateString("en-US")
+    }
 
 };

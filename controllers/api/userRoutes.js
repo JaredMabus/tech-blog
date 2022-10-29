@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
 
     // Create session variables based on the logged in user
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.userId = userData.id;
       req.session.loggedIn = true;
 
       res.json({ user: userData, msg: 'You are now logged in!' });
@@ -44,12 +44,28 @@ router.post('/logout', (req, res) => {
         res.status(204).end();
       });
     } else {
-      res.status(404).json({ message: "User not logged in" });
+      res.status(404).json({ msg: "User not logged in" });
     }
   } catch (err) {
-    res.status(404).json({ message: err.message });
+    res.status(404).json({ msg: err.message });
   }
-
 });
+
+router.post('/new-user', async (req, res) => {
+  try {
+    let newUser = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.loggedIn = true;
+
+      res.json({ msg: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(404).json({ msg: err.message });
+  }
+});
+
 
 module.exports = router;
